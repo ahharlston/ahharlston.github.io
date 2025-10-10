@@ -1,83 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aryannah Harlston | Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aryannah Harlston · Portfolio</title>
+  <meta name="description" content="The portfolio of Aryannah Harlston — Computer Science & Information Systems." />
+  <meta name="color-scheme" content="light dark" />
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      margin: 0;
-      background-color: #f7f9fc;
-      color: #222;
+    :root{
+      --bg: #0e1116;        
+      --card: #121722;      
+      --ink: #e8edf5;       
+      --muted: #a5b0c2;     
+      --line: #1b2230;      
+      --accent: #5da0ff;    
+      --accent-2: #7be2b3;  
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
     }
-    header {
-      background-color: #2e3a59;
-      color: white;
-      padding: 2rem;
-      text-align: center;
+    @media (prefers-color-scheme: light){
+      :root{--bg:#f7f9fc;--card:#ffffff;--ink:#101318;--muted:#647189;--line:#e7eef7;--shadow:0 10px 28px rgba(2,6,23,.08)}
     }
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    section {
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      color: #2e3a59;
-    }
-    a {
-      color: #2e3a59;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      color: #777;
-    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, "Apple Color Emoji","Segoe UI Emoji"}
+
+    .wrap{max-width:1120px;margin:0 auto;padding:28px}
+
+    /* Topbar */
+    header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg, rgba(15,18,26,.85), rgba(15,18,26,0));backdrop-filter:saturate(140%) blur(8px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:12px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:42px;height:42px;border-radius:14px;background:conic-gradient(from 210deg,var(--accent),var(--accent-2),var(--accent));box-shadow:var(--shadow)}
+    .title{font-size:18px;margin:0;letter-spacing:.3px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;padding:6px 0;border-bottom:2px solid transparent;font-weight:600}
+    nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;margin:30px 0}
+    @media (max-width:980px){.hero{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
+    h1{font-size:40px;line-height:1.15;margin:0 0 10px}
+    .lede{color:var(--muted);margin:6px 0 0}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}
+    .chip{font:600 12px/1 ui-sans-serif;padding:8px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0));}
+
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .btn{display:inline-block;font:600 14px/1 ui-sans-serif;padding:11px 14px;border-radius:12px;border:1px solid var(--line);text-decoration:none;color:var(--ink)}
+    .btn:hover{box-shadow:0 0 0 4px rgba(93,160,255,.15)}
+    .btn.primary{background:var(--accent);border-color:transparent;color:white}
+
+    /* Sections */
+    .section-h{margin:36px 0 14px;font:700 12px/1 ui-sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:760px){.grid{grid-template-columns:1fr}}
+
+    .item h3{margin:0 0 6px;font:700 18px/1.35 ui-sans-serif}
+    .item p{margin:6px 0;color:var(--muted)}
+    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{font:600 12px/1 ui-sans-serif;border:1px solid var(--line);padding:4px 8px;border-radius:999px;color:var(--muted)}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:22px;display:grid;gap:16px}
+    .timeline:before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line)}
+    .tick{position:relative;padding-left:8px}
+    .tick:before{content:"";position:absolute;left:-18px;top:.55em;width:10px;height:10px;border-radius:999px;background:var(--accent)}
+
+    footer{margin:44px 0 12px;color:var(--muted);text-align:center}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
   </style>
 </head>
 <body>
-  <header>
-    <h1>👋 Hi, I’m <span style="color:#82aaff;">Aryannah Harlston</span></h1>
-    <p>Computer Science & Information Systems Student</p>
-  </header>
+  <a class="sr-only" href="#content">Skip to content</a>
+  <div class="wrap">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <h2 class="title">Aryannah Harlston</h2>
+        </div>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I’m a Computer Science and Information Systems student passionate about building
-      software that makes life easier and more efficient. I’m currently learning full-stack
-      development and enjoy exploring how technology connects business and creativity.
-    </p>
-  </section>
+    <main id="content">
+      <section id="about" class="hero">
+        <div class="card">
+          <h1>Sleek & Sophisticated Portfolio — built from scratch</h1>
+          <p class="lede">Nashville, TN · CS & IS student • Open to internships & early‑career roles</p>
+          <div class="chips" aria-label="focus areas">
+            <span class="chip">Java · Spring Boot</span>
+            <span class="chip">Python · Flask</span>
+            <span class="chip">JavaScript · Web</span>
+            <span class="chip">APIs · Cloud fundamentals</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="resume.pdf">Download Résumé</a>
+            <a class="btn" href="mailto:aryharlston@gmail.com">Email</a>
+            <a class="btn" href="https://github.com/ahharlston" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/aryannahharlston" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <aside class="card">
+          <h2 class="section-h" id="skills">Skills</h2>
+          <div class="grid">
+            <div class="item"><h3>Languages</h3><p>Java, Python, JavaScript, HTML/CSS, SQL</p></div>
+            <div class="item"><h3>Frameworks</h3><p>Spring Boot, Flask</p></div>
+            <div class="item"><h3>Tools</h3><p>Git/GitHub, IntelliJ, VS Code, Maven, Apache Netbeans</p></div>
+            <div class="item"><h3>Concepts</h3><p>REST APIs, JSON, Basic Cloud, Data Viz</p></div>
+          </div>
+        </aside>
+      </section>
 
-  <section>
-    <h2>Skills</h2>
-    <ul>
-      <li>Languages: Java, Python, JavaScript, HTML, CSS</li>
-      <li>Tools: Git, GitHub, IntelliJ IDEA, VS Code, Maven</li>
-      <li>Concepts: APIs, Databases, Cloud Fundamentals</li>
-    </ul>
-  </section>
+      <h2 class="section-h" id="work">Featured</h2>
+      <section class="grid">
+        <article class="card item">
+          <h3>Coming Soon</h3>
+          <p>Add your first project here: 1–2 sentence impact summary and a link to the repo or demo.</p>
+          <div class="meta"><span class="tag">Java</span><span class="tag">APIs</span></div>
+        </article>
+        <article class="card item">
+          <h3>Coming Soon</h3>
+          <p>Keep a consistent pattern: problem → what you built → outcome.</p>
+          <div class="meta"><span class="tag">Python</span><span class="tag">Flask</span></div>
+        </article>
+        <article class="card item">
+          <h3>Coming Soon</h3>
+          <p>When you add screenshots, compress them (≤600 KB) and include alt text.</p>
+          <div class="meta"><span class="tag">JavaScript</span><span class="tag">Web</span></div>
+        </article>
+      </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:aryharlston@gmail.com">aryharlston@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/aryannahharlston" target="_blank">linkedin.com/in/aryannahharlston</a></p>
-    <p>GitHub: <a href="https://github.com/ahharlston" target="_blank">github.com/ahharlston</a></p>
-    <p><a href="resume.pdf" target="_blank">Download My Resume!</a></p>
-  </section>
+      <h2 class="section-h">Experience & Education</h2>
+      <section class="card">
+        <div class="timeline">
+          <div class="tick"><strong>Marketing & Finance Projects</strong> – applied analytics, research, dashboards</div>
+          <div class="tick"><strong>Austin Peay State University</strong> – B.S. Computer Science & Information Systems (Expected 2027)</div>
+        </div>
+      </section>
 
-  <footer>
-    <p>© 2025 Aryannah Harlston | Built with 💻 and ☕</p>
-  </footer>
+      <h2 class="section-h" id="contact">Contact</h2>
+      <section class="card">
+        <p>Email: <a href="mailto:aryharlston@gmail.com">aryharlston@gmail.com</a> · GitHub: <a href="https://github.com/ahharlston" target="_blank" rel="noopener">ahharlston</a> · LinkedIn: <a href="https://www.linkedin.com/in/aryannahharlston" target="_blank" rel="noopener">/in/aryannahharlston</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <p style="opacity:.8">© <span id="year"></span> Aryannah Harlston • Built with semantic HTML & CSS • GitHub Pages</p>
+    </footer>
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+  
